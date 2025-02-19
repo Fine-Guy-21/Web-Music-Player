@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 40;
+    width: 100%;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.2rem;
+    text-align: start;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.4rem;
+    }
+    #audioList, #playerContainer {
+        margin-top: 60px;
+    }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #000;
+    color: #fff;
+    min-height: 135vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+#pickFolder {
+    background: #007AFF;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+}
+
+#pickFolder:hover {
+    background: #005bb5;
+}
+
+#audioList {
+    margin: 20px auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    max-width: 600px;
+    width: 90%;
+    text-align: left;
+    color: #fff;
+    /* border: 2px solid #007AFF; */
+}
+
+/* Custom scrollbar for WebKit browsers */
+#audioList::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+#audioList::-webkit-scrollbar-thumb {
+    background: #007AFF; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Rounded corners */
+}
+
+#audioList::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker color on hover */
+}
+
+#audioList::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* Color of the scrollbar track */
+}
+
+.audio-item {
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.audio-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.audio-item.active {
+    background: #007AFF !important;
+    color: white !important;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+.audio-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.audio-item .checkmarks {
+    display: flex;
+    gap: 4px;
+    opacity: 0.7;
+}
+
+
+#playerContainer {
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #111;
+    padding: 20px;
+    border-radius: 8px;
+    display: block; /* Hidden by default */
+}
+
+.player-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.time-info {
+    font-size: 12px;
+    color: #888;
+}
+
+#progressBarContainer {
+    width: 100%;
+    height: 4px;
+    background-color: #333;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+    background-color: #007AFF;
+    border-radius: 2px;
+    position: relative;
+    transition: width 0.1s linear;
+}
+
+#progress::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: none;
+}
+
+#progressBarContainer:hover #progress::after {
+    display: block;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.left-section {
+    flex: 1;
+}
+
+.center-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 2;
+    justify-content: center;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+#controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+#controls button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#playPause {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#playPause:hover {
+    background-color: #e0e0e0;
+}
+
+#currentTrack {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#volumeControl {
+    width: 100px;
+    height: 4px;
+    background-color: #333;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+#volumeControl input[type="range"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.volume-level {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #007AFF;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #audioList {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .player-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .center-section {
+        order: -1;
+        width: 100%;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #controls button {
+        width: 28px;
+        height: 28px;
+    }
+
+    #playPause {
+        width: 36px;
+        height: 36px;
+    }
+
+    #currentTrack {
+        font-size: 12px;
+    }
+
+    #volumeControl {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    #pickFolder {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .audio-item {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .player-top {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .time-info {
+        font-size: 10px;
+    }
+
+    #currentTrack {
+        font-size: 10px;
+    }
+
+    #controls button {
+        width: 24px;
+        height: 24px;
+    }
+
+    #playPause {
+        width: 32px;
+        height: 32px;
+    }
+
+    #volumeControl {
+        width: 60px;
+    }
+}
