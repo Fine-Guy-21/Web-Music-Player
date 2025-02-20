@@ -10,7 +10,8 @@
     <header class="header">
         <h1>🎵 Fine Music Player</h1>
     </header>
-    <button id="pickFolder">Select Folder</button>
+    
+    <input type="file" id="pickFolder" webkitdirectory directory multiple>
     <div id="audioList"><strong>Your Music Files:</strong></div>
 
     <audio id="audioPlayer"></audio>
@@ -49,6 +50,7 @@
         </div>
       </div>
     </div>
-    <script src="app.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
   </body>
 </html>

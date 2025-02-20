@@ -48,6 +48,7 @@ body {
 }
 
 #pickFolder {
+    /* display: none; */
     background: #007AFF;
     border: none;
     padding: 10px 20px;
@@ -62,6 +63,7 @@ body {
 #pickFolder:hover {
     background: #005bb5;
 }
+
 
 #audioList {
     margin: 20px auto;
@@ -256,7 +258,9 @@ body {
 #currentTrack {
     font-size: 14px;
     font-weight: 500;
+    display: block;
     white-space: nowrap;
+    max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
