@@ -4,6 +4,9 @@
 
 A modern and intuitive web-based music player that allows users to open and play audio files directly from their device. Built with HTML, CSS, and JavaScript, this player supports a wide range of audio formats and provides a seamless listening experience.
 
+![Web Music Player Screenshot](screenshot.png)
+
+
 ## Features ✨
 
 - **Open Local Audio Files**: Browse and load audio files (MP3, WAV, OGG, FLAC, M4A) directly from your device.
