@@ -38,6 +38,7 @@
             <img src="icons/icons8-end-24.png" alt="Next" />
           </button>
           <button id="repeat"><img src="icons/icons8-repeat-24.png" alt="repeat"></button>
+          <button id="lyricsBtn"><img src="icons/icons8-lyrics-24.png" alt="lyrics"></button>
         </div>
         <div class="right-section">
         <img src="icons/icons8-audio-24.png" alt="">
@@ -50,7 +51,18 @@
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
+
+    <div id="lyricsPopup" class="lyrics-popup">
+      <div class="lyrics-content">
+        <div class="lyrics-header">
+          <h3 id="lyricsTitle"></h3>
+          <button id="closeLyrics">&times;</button>
+        </div>
+        <div id="lyricsText"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
   </body>
 </html>
+
